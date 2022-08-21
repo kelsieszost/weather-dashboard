@@ -63,24 +63,3 @@ line-height: 1.5;
     display: flex;
 }
 
-.list-group {
-    margin-bottom: 10px;
-    padding: 1.5%;
-    border-radius: var(--border-radius);
-    background-color: var(--light-dark);
-    color: white;
-    text-decoration: none;
-
-}
-
-.card-deck {
-    margin-bottom: 10px;
-    padding: 1.5%;
-    border-radius: var(--border-radius);
-    background-color: var(--light-dark);
-    color: var(--primary);
-    text-decoration: none;
-    margin-right: 10px;
-    height: 250px;
-    line-height: 1.8;
-}

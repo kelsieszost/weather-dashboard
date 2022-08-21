@@ -1,6 +1,6 @@
 var APIKey = "b3a39c328c85f0183f77ee0cb31af416";
 
-varcities = [];
+var cities = [];
 var currentCity;
 
 var searchList = document.getElementById("list-of-cities");
@@ -19,10 +19,23 @@ function storedCities() {
 
 $("#searchBtn").on("click", function(event){
     event.preventDefault();
-    city = $("#searchCities").preventDefault();
+    city = $("#input").val();
+    cities = [];
+    cities.push(city);
+    
 
     getWeather();
     storedCities();
     showCity()
 ;}
 )
+
+function getWeather(){
+
+    var weatherUrl = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&APPID=" + APIKey
+    fetch(weatherUrl)
+    .then(function(response) {
+        return response.json();
+    }
+    )
+}
