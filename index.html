@@ -4,44 +4,45 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://kit.fontawesome.com/1c840a480d.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="Assets/styles.css">
     <title>Weather Dashboard</title>
 </head>
 
 <body>
     <header class="hero">
-    <h1>Weather Dashboard</h1>
+    <h1 class="main-title">Weather Dashboard</h1>
     </header>
 
     <main class="container">
-        <div class="row" id="todaysforecast">
+        <div class="today=forecast-col" id="todaysforecast">
 
             <div class="card">
-                <h3>Search For A City</h3>
-                <div id="userForm" class="card-body">
-                    <input type="text" id="MyInput" placeholder="City..">
+                <h2 class="search-title">Search For A City</h2>
+                <div id="form" class="card-body">
+                    <input type="text" id="input" placeholder="City">
                     <button id="searchBtn">Search</button>
                 </div>
             </div>
-                    <div class="history"> 
-                       <h3>Search History</h3> 
-                    </div>
-            <div class="columns">
-                <div>
-                    <h2>Current Weather</h2>
-                    <div class="city"></div>
-                </div>
 
-                <div>
-                    <h2>5 Day Forecast</h2>
-                    <div class="fiveDay"></div>
-                </div>
+            <div class="history"> 
+                <h3>Search History</h3> 
             </div>
-        </section>
+        </div>
+
+        <div class="forecast-col">
+            <div>
+                <h2>Current Weather</h2>
+                <div class="city"></div>
+            </div>
+
+            <div>
+                <h2>5 Day Forecast</h2>
+                <div class="fiveDay"></div>
+            </div>
+        </div>
     </main>
-    <script src="https://cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <!-- <script src="https://cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script> -->
     <script src="assets/script.js"></script>
 </body>
 </html>

@@ -1,3 +1,7 @@
+* {
+    box-sizing: border-box;
+}
+
 .hero {
     text-align: center;
     padding: 3% 4%;
@@ -7,12 +11,12 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     height: 100vh;
     line-height: 1.5;
-    font-size: 16px;
+    font-size: 12px;
 }
 
 .container {
     margin-left: 40px auto;
-    width: 95%;
+    width: 90%;
     min-height: 100%;
     overflow: auto;
 }
@@ -24,17 +28,37 @@ body {
     color: white;
     background-color: skyblue;
     display: block;
-    margin: 5px;
+    margin: 5px 0; 
 }
 
 .searchBten:hover {
     color: azure;
 }
 
-h1 {
+h1, h3 {
+font-size: 1.3rem;
+margin: 0;
+line-height: 1.5;
+
+}
+
+.main-title {
     font-size: 3rem;
     background-color: skyblue;
-    padding: 0 10px;
+    color: lightgray;
+    padding: 0, 10px;
     display: inline-block;
+}
 
+.card {
+    margin: 0 0 20px 0;
+    border: 2px solid blue;
+}
+
+.search-title {
+    padding: 2.5%;
+}
+
+.fiveday {
+    display: flex;
 }
