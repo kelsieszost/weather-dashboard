@@ -1,0 +1,40 @@
+.hero {
+    text-align: center;
+    padding: 3% 4%;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    height: 100vh;
+    line-height: 1.5;
+    font-size: 16px;
+}
+
+.container {
+    margin-left: 40px auto;
+    width: 95%;
+    min-height: 100%;
+    overflow: auto;
+}
+
+#searchBtn {
+    font-size: 1.3rem;
+    width: 100%;
+    display: block;
+    color: white;
+    background-color: skyblue;
+    display: block;
+    margin: 5px;
+}
+
+.searchBten:hover {
+    color: azure;
+}
+
+h1 {
+    font-size: 3rem;
+    background-color: skyblue;
+    padding: 0 10px;
+    display: inline-block;
+
+}
