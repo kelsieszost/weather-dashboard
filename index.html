@@ -9,38 +9,33 @@
 </head>
 
 <body>
-    <header class="hero">
-    <h1 class="main-title">Weather Dashboard</h1>
-    </header>
-
-    <main class="container">
-        <div class="today=forecast-col" id="todaysforecast">
-
-            <div class="card">
-                <h2 class="search-title">Search For A City</h2>
-                <div id="form" class="card-body">
-                    <input type="text" id="input" placeholder="City">
-                    <button id="searchBtn">Search</button>
+    <header>Weather Dashboard</header>
+    <div class="container">
+        <div class="row">
+            <container class="col-sm-3">
+                <form>
+                    <input type="text" id="citySearch" class="city-search" placeholder="Search">
+                    <button type="submit" id="searchBtn" class="search-btn">Search</button>
+                </form>
+                <div id="cityBtns" class="city-btns"></div>
+            </container>
+            <container class="col-sm-9">
+                <h1>Current Weather</h1>
+                <div id="currentWeatherContainer" class="current-weather-container">
+                    <h2 id="cityName" class="city-name"></h2>
+                    <h4 id="date" class="date"></h4>
+                    <img id="icon" class="icon" />
+                    <h4 id="temp" class="temp"></h4>
+                    <h4 id="wind" class="wind"></h4>
+                    <h4 id="humidity" class="humidity"></h4>
+                    <div class="index-bar">
+                        <h4 id="uvIndex" class="uv-index"></h4>
+                    </div>
                 </div>
-            </div>
-
-            <div class="history"> 
-                <h3>Search History</h3> 
-            </div>
+                <div id="forecastContainer" class="forecast-container card-group"></div>
+            </container>
         </div>
-
-        <div class="forecast-col">
-            <div>
-                <h2>Current Weather</h2>
-                <div class="city"></div>
-            </div>
-
-            <div>
-                <h2>5 Day Forecast</h2>
-                <div class="fiveDay"></div>
-            </div>
-        </div>
-    </main>
+    </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="assets/script.js"></script>
