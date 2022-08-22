@@ -63,23 +63,21 @@ function weatherSearch(citySearch){
             temp.innerHTML = "Temperature: ${tempValue} + degrees F ";
             humidity.innerHTML = "Humidity: ${humidityValue} + %";
             weatherIcon.setAttribute("src", weatherIcon);
-            GeolocationCoordinates(city);
+            getCoordinates(city);
         })
 
+        function getCoordinates(citySearch) {
         var uvUrl = "https://api.openweathermap.org/data/2.5/uvi?&appid=" + APIKey + "&lat=" +latitude + "&lon=" +longitude;
         fetch(uvUrl)
-
-    .then(function(response){
-        return response.json
-    })
-
-    .then(function(data) {
-        uvId = data.value;
-
-    
-    })
-    })
-}
+                .then(response => response.json())
+                .then(data => {
+                    let lat = data.coord.lat;
+                    let lon = data.coord.lon;
+                    getUVI(lat, lon);
+                    getFiveDay(lat, lon);
+                })
+        };
+        
 
 function weatherDisplay() {
     var weather = $("#todaysForecast");
