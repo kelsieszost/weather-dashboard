@@ -1,10 +1,18 @@
+// Set Variables
+
 var APIKey = "b3a39c328c85f0183f77ee0cb31af416";
 
-var cities = [];
-var selectedCity;
-
-var searchList = document.getElementById(".history");
-var ciySearchHistory = JSON.parse(localStorage.getItem("cities")) || [];
+let cityName = document.querySelector(".city-name");
+let date = document.querySelector(".date");
+let temp = document.querySelector(".temp");
+let wind = document.querySelector(".wind");
+let humidity = document.querySelector(".humidity");
+let uvIndex = document.querySelector(".uv-index");
+let icon = document.querySelector(".icon");
+let forecast = document.querySelector(".five-day-forecast");
+let searchBtn = document.querySelector(".search-btn");
+let cityBtn = document.querySelector(".city-btn");
+let cities = JSON.parse(localStorage.getItem("cities")) || [];
 
 $(document).ready(function() {
     if (cities !==null) {
