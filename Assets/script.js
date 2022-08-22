@@ -31,33 +31,40 @@ function getCity(event) {
     saveCitySearch(citySearch)
 }
 
-$("#searchBtn").on("click", function(event){
-    event.preventDefault();
-    city = $("#input").val();
-    cities = [];
-    cities.push(city);
-    weatherSearch();
-    storedCities();
-    cityDisplay()
-;}
-)
+// $("#searchBtn").on("click", function(event){
+//     event.preventDefault();
+//     city = $("#input").val();
+//     cities = [];
+//     cities.push(city);
+//     weatherSearch();
+//     storedCities();
+//     cityDisplay()
+// ;}
+// )
 
-function weatherSearch(){
-
-    var weatherUrl = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&APPID=" + APIKey
-    fetch(weatherUrl)
-    .then(function(response) {
-        return response.json();
-    })
-
-    .then(function(data) {
-        currentDay = moment.unix(data.dt).format("l");
-        var temperature = data.main.temp;
-        temp = ((temperature - 273.15) * 1.80 + 32).toFixed(1);
-        windSpeed = data.wind.speed;
-        humidity = data.main.humidity;
-        var latitude = data.coord.lat;
-        var longitude = data.coord.lon;
+function weatherSearch(citySearch){
+    let city = citySearch.target || citySearch;
+    city = citySearch.target ?
+        city.getAttribute("data-city") : citySearch;
+        var weatherUrl = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&APPID=" + APIKey
+    fetch (weatherUrl)
+        .then(response => response.json())
+        .then(data => {
+            let name = data["name"];
+            let currentDate = moment.unix(data.dt).format("l");
+            let weatherIcon = "https://openweathermap.org/img/w/" + data.weather[0].icon + ".png";
+            let options = {date};
+            let windValue = data["wind"]["speed"];
+            let tempValue = data["main"]["temp"];
+            let humidityValue = data["main"]["humidity"];
+            city.name.innerHTML = name;
+            date.innerHTML = currentDate;
+            weatherIcon.innerHTML = weatherIcon;
+            temp.innerHTML = "Temperature: ${tempValue} + degrees F ";
+            humidity.innerHTML = "Humidity: ${humidityValue} + %";
+            weatherIcon.setAttribute("src", weatherIcon);
+            GeolocationCoordinates(city);
+        })
 
         var uvUrl = "https://api.openweathermap.org/data/2.5/uvi?&appid=" + APIKey + "&lat=" +latitude + "&lon=" +longitude;
         fetch(uvUrl)
