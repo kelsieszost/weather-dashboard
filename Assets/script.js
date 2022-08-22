@@ -14,15 +14,21 @@ let searchBtn = document.querySelector(".search-btn");
 let cityBtn = document.querySelector(".city-btn");
 let cities = JSON.parse(localStorage.getItem("cities")) || [];
 
-$(document).ready(function() {
-    if (cities !==null) {
-        cities = ciySearchHistory || [];
+// stores users search history into local storage 
+function searchHistory() {
+    let cityList = localStorage.getItem("cities");
+    if (cityList) {
+        cities = JSON.parse(cityList);
+        console.log(cities);
+        return cities();
     }
-});
+}
 
-function storedCities() {
-    localStorage.setItem("cities", JSON.stringify(cities));
-    console.log(localStorage);
+function getCity(event) {
+    event.preventDefault();
+    let citySearch = document.querySelector(".city-search").value;
+    document.getElementById("citySearch").value= "";
+    saveCitySearch(citySearch)
 }
 
 $("#searchBtn").on("click", function(event){
