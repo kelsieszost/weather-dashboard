@@ -42,24 +42,4 @@ line-height: 1.5;
 
 }
 
-.main-title {
-    font-size: 3rem;
-    background-color: skyblue;
-    color: lightgray;
-    padding: 0, 10px;
-    display: inline-block;
-}
-
-.card {
-    margin: 0 0 20px 0;
-    border: 2px solid blue;
-}
-
-.search-title {
-    padding: 2.5%;
-}
-
-.fiveday {
-    display: flex;
-}
 

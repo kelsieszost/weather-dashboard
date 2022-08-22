@@ -22,15 +22,13 @@ $("#searchBtn").on("click", function(event){
     city = $("#input").val();
     cities = [];
     cities.push(city);
-    
-
-    getWeather();
+    weatherSearch();
     storedCities();
     cityDisplay()
 ;}
 )
 
-function getWeather(){
+function weatherSearch(){
 
     var weatherUrl = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&APPID=" + APIKey
     fetch(weatherUrl)
@@ -53,9 +51,45 @@ function getWeather(){
     .then(function(response){
         return response.json
     })
+
     .then(function(data) {
         uvId = data.value;
-    }
-    )
+
+    
+    })
     })
 }
+
+function weatherDisplay() {
+    var weather = $("#todaysForecast");
+    var weatherHeader = $("<div class = 'container'>")
+    var weatherdiv = $("<div class = 'container'>")
+
+    console.log(city);
+
+    var cityEl = $("<h3>");
+    cityEl.text(city);
+    weather.empty();
+    dateEl = $('<h3>').text(currentDate.toString());
+    console.log(dateEl);
+
+    var tempEL = $("<p>").text("Temperature: " +tempF + "F");
+    $("#todaysForecast").append(weatherdiv);
+    console.log(tempEl);
+}
+
+function cityDisplay(){
+    var storedCities = JSON.parse(localStorage.getItem("cities")) || [];
+    var ulEl = document.createElement("ul");
+    ulEl.classList.add("list-unstyled");
+    ulEl.classList.add("w-100");
+
+    for(var i = 0; i < storedCities.length; i++){
+        
+        var liEl = document.createElement("li");
+        liEl.innerHTML = "<button type='button' class='list-group-item list-group-item-action' attr='"+cities[i]+"'>" + cities[i] + "</button>";
+        ulEl.appendChild(liEl);
+    }
+        searchList.appendChild(ulEl); 
+    
+};
