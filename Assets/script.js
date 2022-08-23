@@ -47,32 +47,32 @@ function weatherSearch(citySearch) {
             let windValue = data["wind"]["speed"];
             let tempValue = data["main"]["temp"];
             let humidityValue = data["main"]["humidity"];
-            city.name.innerHTML = nameValue;
+            cityName.innerHTML = nameValue;
             date.innerHTML = currentDate;
             weatherIcon.innerHTML = weatherIcon;
-            temp.innerHTML = "Temperature: ${tempValue} + degrees F ";
-            humidity.innerHTML = "Humidity: ${humidityValue} + %";
-            weatherIcon.setAttribute("src", weatherIcon);
+            temp.innerHTML = tempValue + "°F";
+            humidity.innerHTML = humidityValue + "% Humidity";
+            icon.setAttribute("src", weatherIcon);
             getCoordinates(city);
         })
 };
 
 function getCoordinates(citySearch) {
-    fetch(`https://api.openweathermap.org/data/2.5/weather?q=${citySearch}&units=imperial&appid=${API}`)
+    fetch(`https://api.openweathermap.org/data/2.5/weather?q=${citySearch}&units=imperial&appid=${APIKey}`)
         .then(response => response.json())
         .then(data => {
             let lat = data.coord.lat;
                 let lon = data.coord.lon;
                 getUVI(lat, lon);
-                getFiveDay(lat, lon);
+                showFiveDay(lat, lon);
                 })
         };
 
         function getUVI(lat, lon) {
-            fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=imperial&exclude=minutely,hourly,daily,alerts&appid=${APIKey}`)
+            fetch(`https://api.openweathermap.org/data/2.5/uvi?&appid=${APIKey}&lat=${lat}&lon=${lon}&units=imperial&exclude=minutely,hourly,daily,alerts`)
                 .then(response => response.json())
                 .then(data => {
-                    let uviValue = data['current']['uvi'];
+                    let uviValue = data.value;
                     if (uviValue < 2) {
                         uvIndex.setAttribute('class', 'low');
                     }
@@ -150,7 +150,7 @@ function renderCities() {
     // cities = cities.slice(Math.max(cities.length - 5, 0));
     console.log(cities);
     cities = cities.slice(cities.length - 5);
-    console.log(cities);
+    console.log(cities.length);
     cities.forEach(city => {
         let btn = document.createElement('button');
         cityBtn.prepend(btn);
