@@ -45,7 +45,7 @@ function weatherSearch(citySearch) {
             let windValue = data["wind"]["speed"];
             let tempValue = data["main"]["temp"];
             let humidityValue = data["main"]["humidity"];
-            city.name.innerHTML = name;
+            city.name.innerHTML = nameValue;
             date.innerHTML = currentDate;
             weatherIcon.innerHTML = weatherIcon;
             temp.innerHTML = "Temperature: ${tempValue} + degrees F ";
@@ -157,6 +157,6 @@ function renderCities() {
 }
 
 // event listeners
-searchBtn.addEventListener('click', getCityName);
+searchBtn.addEventListener('click', getCity);
 cityBtn.addEventListener('click', () => weatherSearch(event));
-init();
+searchHistory();
