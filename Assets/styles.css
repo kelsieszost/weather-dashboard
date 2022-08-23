@@ -1,3 +1,5 @@
+
+
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: skyblue;
@@ -26,17 +28,17 @@ h1 {
     padding: 1em;
     border-radius: 15px;
     background-color: white;
-    width: fit-content;
-    
+    width: fit-content;  
 }
 
 form {
     margin-bottom: 5px;
+    padding-top: 10px;
     justify-content: center;
 }
 
 .city-search {
-    width: 100%;
+    width: 25%;
     margin-bottom: 10px;
 }
 
@@ -49,18 +51,46 @@ background-color: green;
 }
 
 .moderate {
-background-color: lightyellow;
+background-color: yellow;
 }
 
 .high {
 background-color: orange;
+color: white;
 }
 
 
 .very-high {
 background-color: red;
+color: white;
 }
 
 .extreme {
 background-color: purple;
+color: white;
 }
+
+.card {
+    background-color: white;
+    color: black;
+}
+
+.five-day-forecast {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 30px;
+}
+
+.forecast{
+    background-color:white;
+    color:black;
+    border: 2px solid skyblue;
+    text-align:center;
+    border-radius: 15px;
+    
+}
+
+.card-text {
+    font-size: 15px;
+}
+
