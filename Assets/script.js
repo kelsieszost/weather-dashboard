@@ -1,29 +1,30 @@
-// Set Variables
-
 var APIKey = "b3a39c328c85f0183f77ee0cb31af416";
 
-let cityName = document.querySelector(".city-name");
-let date = document.querySelector(".date");
-let temp = document.querySelector(".temp");
-let wind = document.querySelector(".wind");
-let humidity = document.querySelector(".humidity");
-let uvIndex = document.querySelector(".uv-index");
-let icon = document.querySelector(".icon");
-let forecast = document.querySelector(".five-day-forecast");
-let searchBtn = document.querySelector(".search-btn");
-let cityBtn = document.querySelector(".city-btn");
-let cities = JSON.parse(localStorage.getItem("cities")) || [];
+var cityName = document.getElementById("cityName");
+var date = document.getElementById("date");
+var temp = document.getElementById("temp");
+var wind = document.getElementById("wind");
+var humidity = document.getElementById("humidity");
+var uvIndex = document.getElementById("uvIndex");
+var icon = document.getElementById("icon");
+var forecast = document.getElementById(".fiveDay");
+var searchBtn = document.querySelector(".search-btn");
+var cityBtn = document.querySelector(".city-btn");
+var cities = JSON.parse(localStorage.getItem("cities")) || [];
 
 // stores users search history into local storage 
 function searchHistory() {
-    let cityList = localStorage.getItem("cities");
-    if (cityList) {
-        cities = JSON.parse(cityList);
-        console.log(cities);
-        return cities();
-    }
+    // let cityList = localStorage.getItem("cities");
+    // if (cityList) {
+    //     cities = JSON.parse(cityList);
+    //     console.log(cities);
+    //     console.log("SearchHistory Function was Run")
+    //     return cities;
+    // }
+    console.log(cities);
 }
 
+// retrieves value of city-search by class/value.
 function getCity(event) {
     event.preventDefault();
     let citySearch = document.querySelector(".city-search").value;
@@ -31,6 +32,7 @@ function getCity(event) {
     saveCitySearch(citySearch)
 };
 
+//retrives data from API 
 function weatherSearch(citySearch) {
     let city = citySearch.target || citySearch;
     city = citySearch.target ?
@@ -145,7 +147,10 @@ function saveCitySearch(citySearch) {
 // renders the past city names to buttons
 function renderCities() {
     cityBtn.textContent = '';
-    cities = cities.slice(Math.max(cities.length - 5, 0));
+    // cities = cities.slice(Math.max(cities.length - 5, 0));
+    console.log(cities);
+    cities = cities.slice(cities.length - 5);
+    console.log(cities);
     cities.forEach(city => {
         let btn = document.createElement('button');
         cityBtn.prepend(btn);
@@ -159,4 +164,4 @@ function renderCities() {
 // event listeners
 searchBtn.addEventListener('click', getCity);
 cityBtn.addEventListener('click', () => weatherSearch(event));
-searchHistory();
+renderCities();
