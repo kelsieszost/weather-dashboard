@@ -92,48 +92,82 @@ function getCoordinates(citySearch) {
                 })
         };
 
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
         function showFiveDay(lat, lon) {
-            function getFiveDay(lat, lon) {
-                fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=imperial&exclude=current,minutely,hourly,alerts&appid=${APIKey}`)
-                    .then(response => response.json())
-                    .then(data => {
-                        forecastContainer.innerHTML = "";
-                        data.daily.forEach((day, index) => {
-                            if (index === 0 || index > 5) {
-                                return;
-                            };
-                            let forecastDate = currentDate(day.dt * 1000);
-                            let options = { date };
-                            let forecastIcon = 'https://openweathermap.org/img/w/' + day.weather[0].icon + '.png';
-                            let forecastIconDescription = day.weather[0].description || weather[0].main;
-                            let forecastTemp = day.temp.day;
-                            let forecastWind = day.wind_speed;
-                            let forecastHumidity = day.humidity;
-                            let forecastCard = document.createElement('div');
-                            let cardDate = document.createElement('h3');
-                            let cardIcon = document.createElement('img');
-                            let cardTemp = document.createElement('p');
-                            let cardWind = document.createElement('p');
-                            let cardHumidity = document.createElement('p');
-                            forecastContainer.append(forecastCard);
-                            forecastCard.setAttribute('class', 'card');
-                            forecastCard.setAttribute('class', 'my-card');
-                            cardIcon.setAttribute('src', forecastIcon);
-                            cardIcon.setAttribute('alt', forecastIconDesc);
-                            cardIcon.setAttribute('class', 'card-icon');
-                            forecastCard.append(cardDate);
-                            forecastCard.append(cardIcon);
-                            forecastCard.append(cardTemp);
-                            forecastCard.append(cardWind);
-                            forecastCard.append(cardHumidity);
-                            cardDate.innerHTML = currentDate('en-US', options).format(forecastDate);
-                            cardIcon.innerHTML = forecastIcon;
-                            cardTemp.innerHTML = `Temperature: ${forecastTemp}°`;
-                            cardWind.innerHTML = `Wind: ${forecastWind} mph`;
-                            cardHumidity.innerHTML = `Humidity: ${forecastHumidity}%`;
-                        })
-                    })
-                }};
+                fetch(`https://api.openweathermap.org/data/2.5/forecast?&lat=${lat}&lon=${lon}&units=imperial&exclude=current,minutely,hourly,alerts&appid=${APIKey}`)
+                .then(function(response){
+                    return response.json();
+                })
+                .then(function(data){
+                    // city = $("#searchCities").val();
+                    var fiveDayForecast = data.list;
+                   
+                
+                    for (let i = 0; i < 5; i++) {
+                        futureDate = moment().add(i, 'days').format("l");
+                        console.log(data);
+                        console.log(data.list[i].weather[0].icon);
+                        futureConditionsIcon =  data.list[i].weather[0].icon;
+                        futureConditionsIconEl = "http://openweathermap.org/img/w/"+ futureConditionsIcon + ".png";
+                        futureHumidity = fiveDayForecast[i].main.humidity;
+                        var futureTempVal = fiveDayForecast[i].main.temp;
+                        tempF = futureTempVal;
+                        futureWindSpeed = fiveDayForecast[i].wind.speed;
+                
+                
+                
+                    var card = $("<div class='card'>").addClass("forecast");
+                    var cardDiv = $("<div>").attr("class", "card-block");
+                    var TitleHeader = $("<h6>").text(futureDate).addClass("pt-2");
+                    var TitleDiv = $("<div>").attr("class", "card-block");
+                    var TextDiv = $("<div>").attr("class", "card-text");
+                    var imgEl = $("<img>").attr("src", futureConditionsIconEl);  
+                    var TempEl = $("<p>").text("Temp: " + tempF + " ºF").css("font-size", "10px");
+                    var WindEl = $("<p>").text("Wind: " + futureWindSpeed + "%").css("font-size", "10px");
+                    var HumidityEl = $("<p>").text("Humidity: " + futureHumidity + "%").css("font-size", "10px");
+                
+                    
+                    TitleDiv.append(TitleHeader);
+                    cardDiv.append(TitleDiv);
+                    TextDiv.append(imgEl);
+                    TextDiv.append(TempEl);
+                    TextDiv.append(WindEl);
+                    TextDiv.append(HumidityEl);
+                    card.append(cardDiv);
+                    cardDiv.append(TextDiv);
+                    $(".five-day-forecast").append(card);
+                
+                
+                  
+                }
+                
+                FutureHeader = $("<h4>").text("Five Day Forecast:").attr("id", "card-deck-title");
+                FutureHeader.addClass("futureforecast");
+                $(".header").append(FutureHeader);
+                  }
+                    
+                )};
+                
 
 function saveCitySearch(citySearch) {
     if (!cities.includes(citySearch)) {
