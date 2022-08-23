@@ -44,4 +44,23 @@ form {
     width: 50vh;
 }
 
+.low {
+background-color: green;
+}
 
+.moderate {
+background-color: lightyellow;
+}
+
+.high {
+background-color: orange;
+}
+
+
+.very-high {
+background-color: red;
+}
+
+.extreme {
+background-color: purple;
+}

@@ -62,17 +62,17 @@ function getCoordinates(citySearch) {
         .then(response => response.json())
         .then(data => {
             let lat = data.coord.lat;
-                let lon = data.coord.lon;
+            let lon = data.coord.lon;
                 getUVI(lat, lon);
                 showFiveDay(lat, lon);
                 })
         };
 
-        function getUVI(lat, lon) {
-            fetch(`https://api.openweathermap.org/data/2.5/uvi?&appid=${APIKey}&lat=${lat}&lon=${lon}&units=imperial&exclude=minutely,hourly,daily,alerts`)
-                .then(response => response.json())
-                .then(data => {
-                    let uviValue = data.value;
+    function getUVI(lat, lon) {
+        fetch(`https://api.openweathermap.org/data/2.5/uvi?&appid=${APIKey}&lat=${lat}&lon=${lon}&units=imperial&exclude=minutely,hourly,daily,alerts`)
+            .then(response => response.json())
+            .then(data => {
+                let uviValue = data.value;
                     if (uviValue < 2) {
                         uvIndex.setAttribute('class', 'low');
                     }
@@ -91,48 +91,23 @@ function getCoordinates(citySearch) {
                     uvIndex.innerHTML = `UV Index: ${uviValue}`;
                 })
         };
-
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        function showFiveDay(lat, lon) {
-                fetch(`https://api.openweathermap.org/data/2.5/forecast?&lat=${lat}&lon=${lon}&units=imperial&exclude=current,minutely,hourly,alerts&appid=${APIKey}`)
-                .then(function(response){
-                    return response.json();
+    function showFiveDay(lat, lon) {
+        fetch(`https://api.openweathermap.org/data/2.5/forecast?&lat=${lat}&lon=${lon}&units=imperial&exclude=current,minutely,hourly,alerts&appid=${APIKey}`)
+            .then(function(response){
+                return response.json();
                 })
-                .then(function(data){
-                    // city = $("#searchCities").val();
-                    var fiveDayForecast = data.list;
-                   
-                
-                    for (let i = 0; i < 5; i++) {
-                        futureDate = moment().add(i, 'days').format("l");
-                        console.log(data);
-                        console.log(data.list[i].weather[0].icon);
-                        futureConditionsIcon =  data.list[i].weather[0].icon;
-                        futureConditionsIconEl = "http://openweathermap.org/img/w/"+ futureConditionsIcon + ".png";
-                        futureHumidity = fiveDayForecast[i].main.humidity;
-                        var futureTempVal = fiveDayForecast[i].main.temp;
-                        tempF = futureTempVal;
-                        futureWindSpeed = fiveDayForecast[i].wind.speed;
+            .then(function(data){
+                var fiveDayForecast = data.list;
+                   for (let i = 0; i < 5; i++) {
+                    futureDate = moment().add(i, 'days').format("l");
+                    console.log(data);
+                    console.log(data.list[i].weather[0].icon);
+                    futureConditionsIcon =  data.list[i].weather[0].icon;
+                    futureConditionsIconEl = "http://openweathermap.org/img/w/"+ futureConditionsIcon + ".png";
+                    futureHumidity = fiveDayForecast[i].main.humidity;
+                    var futureTempVal = fiveDayForecast[i].main.temp;
+                    tempF = futureTempVal;
+                    futureWindSpeed = fiveDayForecast[i].wind.speed;
                 
                 
                 
@@ -169,19 +144,17 @@ function getCoordinates(citySearch) {
                 )};
                 
 
-function saveCitySearch(citySearch) {
-    if (!cities.includes(citySearch)) {
+    function saveCitySearch(citySearch) {
+        if (!cities.includes(citySearch)) {
         cities.push(citySearch);
+        }
+        localStorage.setItem('cities', JSON.stringify(cities));
+        renderCities();
+        console.log(cities);
     }
-    localStorage.setItem('cities', JSON.stringify(cities));
-    renderCities();
-    console.log(cities);
-}
 
-// renders the past city names to buttons
-function renderCities() {
+    function renderCities() {
     cityBtn.textContent = '';
-    // cities = cities.slice(Math.max(cities.length - 5, 0));
     console.log(cities);
     cities = cities.slice(cities.length - 5);
     console.log(cities.length);
@@ -195,7 +168,6 @@ function renderCities() {
     })
 }
 
-// event listeners
 searchBtn.addEventListener('click', getCity);
 cityBtn.addEventListener('click', () => weatherSearch(event));
 renderCities();
