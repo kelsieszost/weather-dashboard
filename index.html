@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="Assets/styles.css">
     <title>Weather Dashboard</title>
 </head>
@@ -12,15 +13,16 @@
     <header>Weather Dashboard</header>
     <div class="container">
         <div class="row">
-            <container class="col-sm-3">
+            <container class="col-md-3">
                 <form>
                     <input type="text" id="citySearch" class="city-search" placeholder="Search">
                     <button type="submit" id="searchBtn" class="search-btn btn btn-se">Search</button>
                 </form>
                 <div id="cityBtn" class="city-btn"></div>
             </container>
-            <container class="col-sm-9">
+            <container class="col-md-9">
                 <h1>Current Weather</h1>
+                <div class="row">
                 <div id="currentWeatherContainer" class="current-weather">
                     <h2 id="cityName" class="city-name"></h2>
                     <h4 id="date" class="date"></h4>
@@ -32,10 +34,15 @@
                         <h4 id="uvIndex" class="uv-index"></h4>
                     </div>
                 </div>
-                <div id="fiveDay" class="five-day-forecast"></div>
-                <h2 class="row"id="futureforecast"></h2>
-                <div class="header"></div>
-                <div class="card-deck w-100"></div>
+                </div>
+                <div class="row">
+                <div class="col-12">
+                    <div class="header"></div>
+                    <div id="fiveDay" class="five-day-forecast row"></div>
+                    <div class="card-deck w-100"></div>
+                </div>
+                
+                </div>
             </container>
         </div>
     </div>
