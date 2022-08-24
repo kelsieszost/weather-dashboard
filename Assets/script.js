@@ -12,19 +12,10 @@ var searchBtn = document.querySelector(".search-btn");
 var cityBtn = document.querySelector(".city-btn");
 var cities = JSON.parse(localStorage.getItem("cities")) || [];
 
-// stores users search history into local storage 
 function searchHistory() {
-    // let cityList = localStorage.getItem("cities");
-    // if (cityList) {
-    //     cities = JSON.parse(cityList);
-    //     console.log(cities);
-    //     console.log("SearchHistory Function was Run")
-    //     return cities;
-    // }
     console.log(cities);
 }
 
-// retrieves value of city-search by class/value.
 function getCity(event) {
     event.preventDefault();
     let citySearch = document.querySelector(".city-search").value;
@@ -34,7 +25,6 @@ function getCity(event) {
 };
 
 
-//retrives data from API 
 function weatherSearch(citySearch) {
     let city = citySearch.target || citySearch;
     city = citySearch.target ?
@@ -138,7 +128,7 @@ function getCoordinates(citySearch) {
                 
                   
                 }
-                
+                $(".header").html("");
                 FutureHeader = $("<h4>").text("Five Day Forecast:").attr("id", "card-deck-title");
                 FutureHeader.addClass("futureforecast");
                 $(".header").append(FutureHeader);
@@ -162,7 +152,6 @@ function getCoordinates(citySearch) {
     if (cities.length > 5) {
         cities = cities.slice(cities.length - 5);  
     }
-    // cities = cities.slice(cities.length - 5);
     console.log(cities.length);
     cities.forEach(city => {
         let btn = document.createElement('button');
