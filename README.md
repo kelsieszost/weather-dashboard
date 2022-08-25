@@ -12,6 +12,7 @@ Link to GitHub:
 https://github.com/kelsieszost/weather-dashboard 
 
 Screenshot:
+
 <a href="https://ibb.co/yprDPXf"><img src="https://i.ibb.co/gdxG93j/Screen-Shot-2022-08-24-at-8-36-54-PM.png" alt="Screen-Shot-2022-08-24-at-8-36-54-PM"></a> 
 
 ## License
