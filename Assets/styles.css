@@ -16,6 +16,10 @@ header {
     margin-bottom: 10px;
 }
 
+#temp, #wind, #humidity, #date, #uvIndex {
+    font: size 10px;
+} 
+
 h1, .header {
     margin-top: 20px;
     margin-bottom: 20px;
@@ -96,7 +100,7 @@ background-color: purple;
 }
 
 .card-block {
-    padding: 12px;
+    padding: 15px;
     border: solid white;
     border-radius: 15px;
 }

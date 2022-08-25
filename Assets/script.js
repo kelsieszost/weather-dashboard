@@ -110,9 +110,9 @@ function getCoordinates(citySearch) {
                     var TitleDiv = $("<div>").attr("class", "card-block");
                     var TextDiv = $("<div>").attr("class", "card-text");
                     var imgEl = $("<img>").attr("src", futureConditionsIconEl);  
-                    var TempEl = $("<p>").text("Temp: " + tempF + " ºF").css("font-size", "10px");
-                    var WindEl = $("<p>").text("Wind: " + futureWindSpeed + "%").css("font-size", "10px");
-                    var HumidityEl = $("<p>").text("Humidity: " + futureHumidity + "%").css("font-size", "10px");
+                    var TempEl = $("<p>").text("Temp: " + tempF + " ºF").css("font-size", "15px");
+                    var WindEl = $("<p>").text("Wind: " + futureWindSpeed + "%").css("font-size", "15px");
+                    var HumidityEl = $("<p>").text("Humidity: " + futureHumidity + "%").css("font-size", "15px");
                 
                     
                     TitleDiv.append(TitleHeader);
